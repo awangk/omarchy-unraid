@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "awangk.unraid",
+  "name": "Unraid",
+  "version": "0.1.0",
+  "author": "Anders Wang Kristensen",
+  "description": "Unraid array health, disk temperatures, and capacity in the Omarchy bar",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "UnraidPanel.qml"
+  },
+  "barWidget": {
+    "displayName": "Unraid",
+    "description": "Array state, parity, hottest disk, and capacity from the Unraid GraphQL API",
+    "category": "Info",
+    "allowMultiple": true,
+    "defaultSection": "right",
+    "defaults": {
+      "host": "",
+      "apiKeyFile": "~/.config/omarchy/unraid-api-key",
+      "refreshIntervalSec": 30,
+      "insecure": false,
+      "tempWarn": 45,
+      "tempCrit": 55,
+      "capacityWarn": 85,
+      "capacityCrit": 95,
+      "showCapacity": true,
+      "showTemp": true,
+      "label": "",
+      "showNetwork": true,
+      "netInterface": "",
+      "ssdTempWarn": 60,
+      "ssdTempCrit": 70,
+      "openRefreshIntervalSec": 2,
+      "showNetworkInBar": false
+    },
+    "schema": [
+      {
+        "key": "host",
+        "type": "string",
+        "label": "Server URL",
+        "description": "e.g. http://tower.local or https://192.168.1.10"
+      },
+      {
+        "key": "apiKeyFile",
+        "type": "string",
+        "label": "API key file",
+        "description": "File containing the x-api-key value (chmod 600)"
+      },
+      {
+        "key": "refreshIntervalSec",
+        "type": "int",
+        "label": "Refresh interval (s)"
+      },
+      {
+        "key": "insecure",
+        "type": "bool",
+        "label": "Skip TLS verification"
+      },
+      {
+        "key": "tempWarn",
+        "type": "int",
+        "label": "Disk temp warning (°C)"
+      },
+      {
+        "key": "tempCrit",
+        "type": "int",
+        "label": "Disk temp critical (°C)"
+      },
+      {
+        "key": "capacityWarn",
+        "type": "int",
+        "label": "Array full warning (%)"
+      },
+      {
+        "key": "capacityCrit",
+        "type": "int",
+        "label": "Array full critical (%)"
+      },
+      {
+        "key": "showCapacity",
+        "type": "bool",
+        "label": "Show capacity in bar"
+      },
+      {
+        "key": "showTemp",
+        "type": "bool",
+        "label": "Show hottest disk temp in bar"
+      },
+      {
+        "key": "label",
+        "type": "string",
+        "label": "Prefix label",
+        "description": "Optional short server name shown before the stats"
+      },
+      {
+        "key": "showNetwork",
+        "type": "bool",
+        "label": "Show network transfer rate"
+      },
+      {
+        "key": "netInterface",
+        "type": "string",
+        "label": "Network interface",
+        "description": "Blank picks the busiest non-virtual interface automatically"
+      },
+      {
+        "key": "ssdTempWarn",
+        "type": "int",
+        "label": "SSD temp warning (°C)"
+      },
+      {
+        "key": "ssdTempCrit",
+        "type": "int",
+        "label": "SSD temp critical (°C)"
+      },
+      {
+        "key": "openRefreshIntervalSec",
+        "type": "int",
+        "label": "Refresh interval while panel is open (s)",
+        "description": "Faster polling only while you are looking at the panel"
+      },
+      {
+        "key": "showNetworkInBar",
+        "type": "bool",
+        "label": "Show transfer rate in the bar",
+        "description": "Off by default: a changing rate resizes the widget and shifts the bar"
+      }
+    ]
+  }
+}
